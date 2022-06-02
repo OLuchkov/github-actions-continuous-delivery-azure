@@ -5,16 +5,18 @@ on:
     types: [labeled]
 
 env:
-  DOCKER_IMAGE_NAME: OLuchkov-azure-ttt
+  DOCKER_IMAGE_NAME: oluchkov-azure-ttt
   IMAGE_REGISTRY_URL: docker.pkg.github.com
   #################################################
   ### USER PROVIDED VALUES ARE REQUIRED BELOW   ###
   #################################################
   #################################################
   ### REPLACE USERNAME WITH GH USERNAME         ###
-  AZURE_WEBAPP_NAME: OLuchkov-ttt-app
+  AZURE_WEBAPP_NAME: oluchkov-ttt-app
   #################################################
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    if: contains(github.event.pull_request.labels.*.name, 'stage')
